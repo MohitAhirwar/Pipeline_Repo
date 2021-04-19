@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.techprimers.testing</groupId>
-    <artifactId>mavenpipeline</artifactId>
+    <artifactId>Maven_Project_Pipeline</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
