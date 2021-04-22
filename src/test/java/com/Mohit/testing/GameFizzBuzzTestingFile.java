@@ -1,48 +1,49 @@
-package com.Mohit.testing;
+package com.pipeline.testing;
 
-import org.junit.jupiter.api.*;
 
-class FizzBuzzTest {
+public class CalculatorTest extends TestCase {
+	Calculator cal = new Calculator();
 
-    public FizzBuzz fB;
+	public void testAdd() {
+		Properties prop = new Properties();
+		
+		OutputStream output = null;
 
-    @BeforeEach
-    public void setUp() {
-        fB = new FizzBuzz();
-    }
+		try
+		{
 
-    @DisplayName("Play FizzBuzz with number = 1")
-    @Test
-    public void testNumber() {
-        String fizzBuzz = fB.play(1);
-        Assertions.assertEquals(fizzBuzz, "1");
-    }
+			output = new FileOutputStream("../config.properties");
 
-    @DisplayName("Play FizzBuzz with number = 3")
-    @Test
-    public void testFizz() {
-        String fizzBuzz = fB.play(3);
-        Assertions.assertEquals(fizzBuzz, "Fizz");
-    }
+			// set the properties value
+			prop.setProperty("database", "localhost");
+			prop.setProperty("dbuser", "Mohit");
+			prop.setProperty("dbpassword", "Pipeline");
 
-    @DisplayName("Play FizzBuzz with number = 5")
-    @Test
-    public void testBuzz() {
-        String fizzBuzz = fB.play(5);
-        Assertions.assertEquals(fizzBuzz, "Buzz");
-    }
+			// save properties to project root folder
+			prop.store(output, null);
 
-    @DisplayName("Don't Play FizzBuzz with number = 0")
-    @Test
-    public void testZero() {
+		}catch(
+		IOException io)
+		{
+			io.printStackTrace();
+		}finally
+		{
+			if (output != null) {
+				try {
+					output.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 
-        Assertions.assertThrows(IllegalArgumentException.class,
-                () -> fB.play(0));
-    }
+		}
+	}
 
-    @AfterEach
-    public void tearDown() {
-        fB = null;
-    }
-
+	public void testMultiply() {
+		Assert.assertEquals(cal.multiply(10, 20), 200);
+	}
+	
+	public void testAddNew() {
+		Assert.assertEquals(cal.add(10, 20), 30);
+	}
 }
