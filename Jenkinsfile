@@ -5,7 +5,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'Maven_3_5_0') {
                     bat 'mvn clean compile'
                 }
             }
@@ -14,7 +14,7 @@ pipeline {
        stage ('Testing Stage') {
 
          steps {
-           withMaven(maven : 'maven_3_5_0') {
+           withMaven(maven : 'Maven_3_5_0') {
                   bat 'mvn test'
                }
            }
@@ -22,7 +22,7 @@ pipeline {
         stage ('Packaging Stage') {
 
          steps {
-           withMaven(maven : 'maven_3_5_0') {
+           withMaven(maven : 'Maven_3_5_0') {
                   bat 'mvn package'
                }
            }
@@ -30,14 +30,14 @@ pipeline {
         stage ('Installing Stage') {
 
          steps {
-           withMaven(maven : 'maven_3_5_0') {
+           withMaven(maven : 'Maven_3_5_0') {
                   bat 'mvn install'
                }
            }
        }
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'Maven_3_5_0') {
                     bat 'mvn deploy' 
                 }
             }
